@@ -1,0 +1,13 @@
+Docker project to analyse and study the behaviour of transport layer ports thorugh the use of the python tool
+fastAPI and the web server implementation uvicorn, also in python. 
+The docker image file uses a reducedlightweight base image for reduced size, making use of the slim python optimisation 
+in order to run uncached pip installs from a requirements list. it sets the /usr/local/app as the working
+directory and runs an adduser command within the container shell to create a harmless non-root user
+once the container is built and running, it scans port 8080 and writes a small acknowledgement message
+to confirm that the port is exposed
+
+#to build the docker image
+docker build -t fastapi-docker .
+
+#run the container:
+docker run -d -p 8080:8080 fastapi-docker
